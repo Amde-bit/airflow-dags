@@ -1,0 +1,105 @@
+======================creat doucker with postgres=======================
+$cat << EOF > ~/repos/demo/postgres/docker-compose.yaml
+version: '3'
+services:
+  dw:
+    image: postgres:14-alpine
+    ports:
+      - 5000:5432
+    environment:
+      POSTGRES_DB: dw
+      POSTGRES_USER: dw_user
+      POSTGRES_PASSWORD: dw_password
+EOF
+
+============================Pyenv-Virtualenv=============================
+$/bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
+
+==you must execute extra instructions to configure the brew path and install GCC after completing the previous step==
+echo '# Set PATH, MANPATH, etc., for Homebrew.' >> /home/amde-2024/.profile
+
+
+echo 'eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"' >> /home/amde-2024/.profile
+
+
+eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"
+
+sudo apt upgrade
+
+sudo apt install \
+
+    build-essential \
+
+    curl \
+
+    libbz2-dev \
+
+    libffi-dev \
+
+    liblzma-dev \
+
+    libncursesw5-dev \
+
+    libreadline-dev \
+
+    libsqlite3-dev \
+
+    libssl-dev \
+
+    libxml2-dev \
+
+    libxmlsec1-dev \
+
+    llvm \
+
+    make \
+
+    tk-dev \
+
+    wget \
+
+    xz-utils \
+
+    zlib1g-dev
+
+================Brew install=================
+brew install pyenv
+================to setup dbt==================
+In ~/repos/demo, create a folder named dbt:
+
+$ mkdir ~/repos/demo/dbt
+
+
+Create a new virtual environment named demo_dbt:
+
+$ pyenv virtualenv 3.10.4 demo_dbt
+
+
+$ cd ~/repos/demo/dbt && pyenv local demo_dbt
+
+
+To confirm that demo_dbt is the active virtual environment, run:
+
+$ pyenv version
+
+=======================runing the dbt===================
+$ cd ~/repos/demo/dbt/my_sample_project && dbt run --vars '{execution_date: 2022-09-01}'
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
